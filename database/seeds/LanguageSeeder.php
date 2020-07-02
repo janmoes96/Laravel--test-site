@@ -11,25 +11,19 @@ class LanguageSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('languages')->insert([
-            'code' => 'nl',
-            'name' => 'Nederlands',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('languages')->insert([
-            'code' => 'en',
-            'name' => 'English',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('languages')->insert([
-            'code' => 'sv',
-            'name' => 'Svenska',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
+        $languages = [
+            "nl"=>"Netherlands", 
+            "en"=>"English", 
+            "sv"=>"Svenska"
+        ];
+            
+        foreach($languages as $key => $value) {
+            DB::table('languages')->insert([
+                'code' => $key,
+                'name' => $value,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
+        }
     }
 }
